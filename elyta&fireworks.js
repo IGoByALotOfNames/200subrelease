@@ -166,7 +166,7 @@ function onPlayerClick(id, alt) {
     const selectedItem = api.getItemSlot(id, selectedSlotIndex);
 
     // Check if player is alt-clicking, has Elytra effect, and is holding the "firework" item
-    if (alt){
+    if (alt || api.isMobile(id)){
         if (api.getEffects(id).includes(ELYTRA_EFFECT_NAME)){
             if (selectedItem && selectedItem.attributes.customDescription === FIREWORK_ITEM_ATTRIBUTES.customDescription) {
 
@@ -192,5 +192,5 @@ function onPlayerJoin(id) {
 
     // Give player starting items
     api.setItemSlot(id, 0, "Diamond Hang Glider", null, ELYTRA_ITEM_ATTRIBUTES); // Elytra item
-    api.setItemSlot(id, 1, FIREWORK_ITEM_NAME, 16, FIREWORK_ITEM_ATTRIBUTES); // Firework items
+    api.setItemSlot(id, 1, FIREWORK_ITEM_NAME, 999, FIREWORK_ITEM_ATTRIBUTES); // Firework items
 }
